@@ -101,6 +101,10 @@ app.get('/login', function(req, res){
 });
 
 app.post('/login', function(req, res){
+	
+var configFile =fs.readFileSync('./usuarios.json');
+var config =JSON.parse(configFile);
+console.log(config[0].username)
   authenticate(req.body.username, req.body.password, function(err, user){
     if (user) {
       // Regenerate session when signing in

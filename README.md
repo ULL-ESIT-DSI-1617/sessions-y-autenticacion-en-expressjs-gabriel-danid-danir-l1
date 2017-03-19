@@ -15,3 +15,8 @@
 # Requisitos de la práctica
 
 [Enlace a la descripción de la práctica](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicasessions.html)
+
+# NOTA
+	Tenemos un error a la hora de cambiar la contraseña. Sólo podemos cambiar la contraseña del primer usuario, no nos deja hacer lo mismo con el segundo. No conseguimos encontrar el error.
+# NOTA2
+	La contraseña de pepe es: pepepassword y la de dani es: danipassword 

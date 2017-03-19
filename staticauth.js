@@ -29,12 +29,6 @@ app.use(session({
 
 let bcrypt = require("bcrypt-nodejs");
 let hash = bcrypt.hashSync("amyspassword");
-console.log(`amypassword hashed = ${hash}`);
-let users = { 
-  amy : hash, 
-  juan : bcrypt.hashSync("juanpassword"),
-  antonio : bcrypt.hashSync("antoniopassword") 
-};
 
 let instructions = `
 Visit these urls in the browser:
@@ -66,9 +60,45 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/change', function (req, res, next) {
+ res.render('change');
+});
+app.post('/change', function (req, res) {
+	
+
+	var configFile =fs.readFileSync('./usuarios.json');
+	
+	var config =JSON.parse(configFile);
+	var file = require('./usuarios.json');
+
+	
+	for(var i in config){
+
+			
+		if(config[i].username == req.body.username){
+			
+			if(bcrypt.compareSync(req.body.password, config[i].password)){
+			
+			config[i].password = bcrypt.hashSync(req.body.NewPassword);
+			
+			fs.writeFile('./usuarios.json', JSON.stringify(config), function (err) {
+  			if (err) return console.log(err);
+  				console.log(JSON.stringify(file));
+  				console.log('writing to ' + './usuarios.json');
+			});
+			}
+	}
+	}
+  
+});
+
+
 app.get('/login', function (req, res, next) {
  res.render('login');
 });
+
+
+
 
 // Authentication and Authorization Middleware
 let auth = function(req, res, next) {
@@ -80,13 +110,36 @@ let auth = function(req, res, next) {
  
 // Login endpoint
 app.post('/login', function (req, res) {
-  console.log(req.body);
-  console.log(results.autenticar[0].pepe.contrasena);
+	/*
+
+config[i].password = "new value";
+
+fs.writeFile('./usuarios.json', JSON.stringify(config), function (err) {
+  if (err) return console.log(err);
+  console.log(JSON.stringify(file));
+  console.log('writing to ' + fileName);
+});
+	*/
+console.log(bcrypt.hashSync("danipassword"));
+console.log(bcrypt.hashSync("pepepassword"));
+	var configFile =fs.readFileSync('./usuarios.json');
+	
+	var config =JSON.parse(configFile);
+	var contraseña_bool =0;
+	
+
+	
+	for(var i in config){
+		if(config[i].username == req.body.username){
+			if(bcrypt.compareSync(req.body.password, config[i].password)){
+				contraseña_bool = 1;
+			}
+	}
+	}
   if (!req.body.username || !req.body.password) {
     console.log('login failed');
     res.send('login failed');    
-  } else if(req.body.username in users  && 
-            bcrypt.compareSync(req.body.password, users[req.body.username])) {
+  }else if(contraseña_bool){
     req.session.user = req.body.username;
     req.session.admin = true;
     res.send(layout("login success! user "+req.session.user));

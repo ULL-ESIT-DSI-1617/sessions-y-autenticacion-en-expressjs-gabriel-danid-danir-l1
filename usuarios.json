@@ -1,7 +1,1 @@
-{
-	"autenticar": [{
-		"pepe": {
-			"contrasena": "pepepassword"
-		}
-	}]
-}
+[{"username":"pepe","password":"$2a$10$sN1C4keO.FrVQn.zNFAOhO5AHE6QEf7sld9s3vtnEiULNUF2E3M6K"},{"username":"dani","password":"2a$10$jtV0pJ7fLGz7xrrY5OhMmudmZZXCQmCe9pkwlBcLunqwmLYz2TqEK"}]

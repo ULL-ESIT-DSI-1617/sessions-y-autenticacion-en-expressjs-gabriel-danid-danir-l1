@@ -1,0 +1,26 @@
+
+<% var title = 'Ejemplo cambiar contraseña' %>
+<% include head %>
+
+<h1>Login</h1>
+
+Try accessing <a href="/restricted">/restricted</a>, then authenticate with "tj" and "foobar".
+<form method="post" action="/change">
+  <p>
+    <label>Username:</label>
+    <input type="text" name="username">
+  </p>
+  <p>
+    <label>Old Password:</label>
+    <input type="text" name="password">
+  </p>
+  <p>
+    <label>New Password:</label>
+    <input type="text" name="NewPassword">
+  </p>
+  <p>
+    <input type="submit" value="Submit">
+  </p>
+</form>
+
+<% include foot %>
