@@ -19,4 +19,6 @@
 # NOTA
 	Tenemos un error a la hora de cambiar la contraseña. Sólo podemos cambiar la contraseña del primer usuario, no nos deja hacer lo mismo con el segundo. No conseguimos encontrar el error.
 # NOTA2
+	Ejecutar con nodejs staticauth.js
+	Para loguearse dirigirse a /login y para cambiar la contraseña dirigirse a /change
 	La contraseña de pepe es: pepepassword y la de dani es: danipassword 
